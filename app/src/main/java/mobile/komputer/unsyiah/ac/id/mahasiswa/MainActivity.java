@@ -21,33 +21,32 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // List untuk menampilkan semua mahasiswa di database, hanya nama dan nim
         ListView lstDaftarAnggota = (ListView) findViewById(R.id.lstDaftarMahasiswa);
 
-        // Buat Adapter untuk daftar lstDaftarMahasiswa agar isinya disesuaikan secara otomatis
-        // berdasarkan isi database
-
-        // Buat koneksi ke Database
+        // Bangun dan jalan query untuk mengambil semua mahasiswa di database, hanya nama dan nim
         SQLiteOpenHelper aturMahasiswaDB = new AturMahasiswaDB(this);
         db = aturMahasiswaDB.getReadableDatabase();
-        // Bangun query berikut:
+        // Query-nya:
         //   SELECT _id, nim, nama
         //   FROM MAHASISWA
         //   ORDER BY nama
-        cursor = db.query(AturMahasiswaDB.TABEL_MAHASISWA,            // FROM
-                          new String[] {AturMahasiswaDB.MAHASISWA_ID, // SELECT
+        cursor = db.query(AturMahasiswaDB.TABEL_MAHASISWA,               // FROM
+                          new String[] {AturMahasiswaDB.MAHASISWA_ID,    // SELECT
                                         AturMahasiswaDB.MAHASISWA_NIM,
                                         AturMahasiswaDB.MAHASISWA_NAMA},
-                          null,                                       // WHERE
-                          null,                                       // Argumen untuk WHERE
-                          null,                                       // GROUP BY
-                          null,                                       // HAVING
-                          AturMahasiswaDB.MAHASISWA_NAMA);            // ORDER BY
-        // Buat adapter untuk menghubungkan cursor dengan list
+                          null,                                          // WHERE
+                          null,                                          // Argumen untuk WHERE
+                          null,                                          // GROUP BY
+                          null,                                          // HAVING
+                          AturMahasiswaDB.MAHASISWA_NAMA);               // ORDER BY
+        // Buat adapter agar bisa menghubungkan cursor dengan list
         MahasiswaCursorAdapter mahasiswaCursorAdapter = new MahasiswaCursorAdapter(this, cursor);
-        // Sebutkan ke list untuk memakai adapter yang mana
+
+        // Minta list untuk memakai adapter kita agar menampilkan data dari cursor
         lstDaftarAnggota.setAdapter(mahasiswaCursorAdapter);
 
-        // Buat listener untuk click salah satu item di list
+        // Buat listener untuk tangani click salah satu item di list
         AdapterView.OnItemClickListener itemClickListener =
                 new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> listView, // Dari list yang mana

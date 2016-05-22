@@ -22,14 +22,14 @@ public class RincianActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rincian);
 
-        // Ambil data ID yang dikirim
+        // Ambil data ID yang harus ditampilkan
         Intent pesan = getIntent();
         id = pesan.getLongExtra("id", 0);
 
-        // Query database untuk ambil row yang sesuai
+        // Query database untuk ambil data yang sesuai
         SQLiteOpenHelper aturMahasiswaDB = new AturMahasiswaDB(this);
         SQLiteDatabase db = aturMahasiswaDB.getReadableDatabase();
-        // Bangun query berikut:
+        // Query-nya:
         //   SELECT nim, nama
         //   FROM MAHASISWA
         //   WHERE _id=[id yang dikirim]

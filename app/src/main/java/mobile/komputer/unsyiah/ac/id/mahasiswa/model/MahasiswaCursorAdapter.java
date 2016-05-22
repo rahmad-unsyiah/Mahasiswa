@@ -10,6 +10,10 @@ import android.widget.TextView;
 
 import mobile.komputer.unsyiah.ac.id.mahasiswa.R;
 
+/**
+ * Adapter untuk menghubungkan Cursor dengan ListView. Satu hasil query akan tampil pada satu baris
+ * List.
+ */
 public class MahasiswaCursorAdapter extends CursorAdapter {
     public MahasiswaCursorAdapter(Context context, Cursor cursor) {
         super(context, cursor, 0);
@@ -17,19 +21,20 @@ public class MahasiswaCursorAdapter extends CursorAdapter {
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        // Pakai layout satu_mahasiswa.xml
         return LayoutInflater.from(context).inflate(R.layout.satu_mahasiswa, parent, false);
     }
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        // Find fields to populate in inflated template
-        TextView txtNIM = (TextView) view.findViewById(R.id.txtNIM);
-        TextView txtNama = (TextView) view.findViewById(R.id.txtNama);
-        // Extract properties from cursor
+        // Ambil kolom NIM dari query dan tempatkan ke elemen nim di layout
         String nim = cursor.getString(cursor.getColumnIndexOrThrow(AturMahasiswaDB.MAHASISWA_NIM));
-        String nama = cursor.getString(cursor.getColumnIndexOrThrow(AturMahasiswaDB.MAHASISWA_NAMA));
-        // Populate fields with extracted properties
+        TextView txtNIM = (TextView) view.findViewById(R.id.txtNIM);
         txtNIM.setText(nim);
+
+        // Ambil kolom Nama dari query  dan tempatkan ke elemen nama di layout
+        String nama = cursor.getString(cursor.getColumnIndexOrThrow(AturMahasiswaDB.MAHASISWA_NAMA));
+        TextView txtNama = (TextView) view.findViewById(R.id.txtNama);
         txtNama.setText(nama);
     }
 }

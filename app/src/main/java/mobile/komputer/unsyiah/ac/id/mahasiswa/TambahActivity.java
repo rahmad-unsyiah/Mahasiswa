@@ -29,13 +29,16 @@ public class TambahActivity extends AppCompatActivity {
         TextView txtNama = (TextView) findViewById(R.id.txtNama);
         String nama = txtNama.getText().toString();
 
-        // Ambil akses ke database
+        // Tambah data ke database
         SQLiteOpenHelper aturMahasiswaDB = new AturMahasiswaDB(this);
         SQLiteDatabase db = aturMahasiswaDB.getWritableDatabase();
+        // Sebutkan nilai baru yang akan ditambahkan
         ContentValues mahasiswaBaru = new ContentValues();
         mahasiswaBaru.put(AturMahasiswaDB.MAHASISWA_NIM, nim);
         mahasiswaBaru.put(AturMahasiswaDB.MAHASISWA_NAMA, nama);
+        // Tambahkan ke database
         db.insert(AturMahasiswaDB.TABEL_MAHASISWA, null, mahasiswaBaru);
+        // Tutup koneksi ke database
         db.close();
 
         // Kirim kembali ke Activity MainActivity
