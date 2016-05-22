@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">Mahasiswa</string>
+    <string-array name="daftarMahahsiswa">
+        <item>Si A</item>
+        <item>Si B</item>
+        <item>Si C</item>
+        <item>Si D</item>
+        <item>Si E</item>
+        <item>Si F</item>
+        <item>Si G</item>
+        <item>Si H</item>
+        <item>Si I</item>
+        <item>Si J</item>
+        <item>Si K</item>
+        <item>Si L</item>
+        <item>Si M</item>
+        <item>Si N</item>
+        <item>Si O</item>
+        <item>Si P</item>
+        <item>Si Q</item>
+        <item>Si R</item>
+        <item>Si S</item>
+        <item>Si T</item>
+        <item>Si U</item>
+        <item>Si V</item>
+        <item>Si W</item>
+        <item>Si X</item>
+        <item>Si Y</item>
+        <item>Si Z</item>
+    </string-array>
+</resources>
