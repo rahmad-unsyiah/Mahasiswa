@@ -1,3 +1,6 @@
+/*
+ * (c) 2016 Rahmad Dawood
+ */
 package mobile.komputer.unsyiah.ac.id.mahasiswa;
 
 import android.content.Intent;
